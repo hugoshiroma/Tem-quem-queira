@@ -1,0 +1,23 @@
+.text-label {
+    font-family: 'Roboto';
+    font-weight: 375;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.text-loading {
+    font-family: 'Roboto';
+    font-weight: 350;
+    font-size: 15px;
+}
+
+.back {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    cursor: pointer;
+}
+
+.lds-ellipsis div {
+    background: black;
+}

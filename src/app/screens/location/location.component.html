@@ -1,13 +1,18 @@
+<adress-form [DoE]="DoE"
+(blurEvent)="showForm = !showForm"
+*ngIf="showForm"></adress-form>
 <div class="container-landing">
-    <div class="container-left">
+    <div class="container-left" (click)="openForm('D')">
+        <div class="container-background"></div>
         <span class="text-button">Doador</span>
     </div>
-    <div class="container-right">
+    <div class="container-right" (click)="openForm('E')">
+            <div class="container-background"></div>
             <span class="text-button">Entidade carente</span>
     </div>
     <div class="container-center">
         <span class="main-text">
-                Fala pa nóis o q q você é seu corno manso
+                Selecione qual perfil você se encaixa
             </span>
         <br/>
     </div>

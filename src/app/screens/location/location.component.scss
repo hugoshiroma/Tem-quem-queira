@@ -36,6 +36,7 @@
     top: 50%;
     animation: slideUp 1s forwards;
     animation-delay: 1.2s;
+    pointer-events: none;
 }
 
 .main-text {
@@ -48,6 +49,7 @@
     font-weight: 400;
     font-size: 30px;
     font-family: 'Roboto';
+    pointer-events: none;
 }
 
 .container-left {
@@ -55,7 +57,6 @@
     height: 100%;
     width: 50%;
     left: 0;
-    transition: all 0.3s ease-in;
     cursor: pointer;
 }
 
@@ -64,13 +65,18 @@
     height: 100%;
     width: 50%;
     right: 0;
-    transition: all 0.3s ease-in;
     cursor: pointer;
 }
 
-.container-left:hover, .container-right:hover {
-    transition: all 0.3s ease-out;
+.container-background:hover, .container-background:hover {
+    animation: fadeIn 0.3s ease-in-out;
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255));
+}
+
+.container-background {
+    position: absolute;
+    height: 100%;
+    width: 100%;
 }
 
 .container-left .text-button, .container-right .text-button {
@@ -79,14 +85,4 @@
     animation: fadeIn 0.6s forwards;
     animation-delay: 1.2s;
     opacity: 0;
-}
-
-@keyframes slideUp {
-    from {top: inital;}
-    to {top: 15%;}
-}
-
-@keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
 }

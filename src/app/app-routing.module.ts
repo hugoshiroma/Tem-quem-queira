@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { LocationComponent } from './screens/location/location.component';
 import { HomeComponent } from './screens/home/home.component';
 
 const routes: Routes = [
   { path: '',
-    redirectTo: '/welcome',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
@@ -16,7 +15,7 @@ const routes: Routes = [
     data: { title: 'Chat' }
   },
   {
-    path: 'welcome',
+    path: 'home',
     component: HomeComponent,
     data: { title: 'Home' }
   },
@@ -29,6 +28,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-exports: [RouterModule]
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }

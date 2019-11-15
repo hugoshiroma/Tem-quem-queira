@@ -13,9 +13,9 @@
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="example" >
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right" [ngClass]="{'inverted': url === '/location'}">
                     <li>
-                        <a href="location">
+                        <a [routerLink]="['/location']">
                         <img src="../assets/img/ext-icons/8a7884609c.png" class="fa fa-donation"/>
                         Doe
                         </a>
@@ -39,9 +39,15 @@
                         </a>
                     </li>
                     <li>
-                        <a href="welcome">
+                        <a [routerLink]="['/home']">
                         <img src="../assets/img/ext-icons/25694.svg" class="fa fa-home"/>
                         Home
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/home']">
+                        <img src="../assets/img/ext-icons/130924.png" class="fa fa-login"/>
+                        Login
                         </a>
                     </li>
                 </ul>

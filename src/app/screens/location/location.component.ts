@@ -6,10 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./location.component.scss']
 })
 export class LocationComponent implements OnInit {
+  DoE = '';
+  showForm = false;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  openForm(DoE: string) {
+    this.showForm = true;
+    this.DoE = DoE;
   }
 
 }

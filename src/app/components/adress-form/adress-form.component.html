@@ -1,1 +1,25 @@
-<p>adress-form works!</p>
+<div class="container-modal-60w">
+    <i class="material-icons back unhide" [ngClass]="{'hide' : step === 0}" (click)="back()">arrow_back</i>
+    <div class="container-step-0 unhide" [ngClass]="{'hide' : step !== 0}">
+        <div class="text-label">
+            Nos informe seu CEP
+        </div>
+        <form [formGroup]="locationForm">
+            <mat-form-field>
+                <mat-label>CEP</mat-label>
+                <input matInput
+                type="text"
+                placeholder="CEP"
+                [formControl]="locationForm.get('cep')"
+                mask="00000-000"
+                (input)="searchAdress($event.target.value)"/>
+                <mat-error *ngIf="locationForm.get('cep').invalid">{{locationForm.get('cep').hasError('required') ? 'Você deve informar um CEP!' : ''}}</mat-error>
+            </mat-form-field>
+        </form>
+    </div>
+    <div class="container-step-1 unhide" [ngClass]="{'hide' : step !== 1}">
+        <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div><br/>
+        <span class="text-loading">Estamos buscando {{ DoE === 'D' ? 'entidades carentes' : 'doadores disponíveis'}} próximos a você</span>
+    </div>
+</div>
+<div class="container-overlay" (click)="close()"></div>

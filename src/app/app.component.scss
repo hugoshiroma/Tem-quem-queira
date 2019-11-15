@@ -9,3 +9,28 @@
     filter: invert(1);
     margin-top: -5.5px;
 }
+
+.fa-login {
+    height: 18px;
+    width: 18px;
+    filter: invert(1);
+    margin-top: -7.5px;
+}
+
+.inverted {
+    li {
+        filter: invert(1);
+    }
+}
+
+li {
+    transition: all 0.3s ease-in-out;
+}
+
+@media (max-width: 768px) {
+    .inverted {
+        li {
+            filter: invert(0);
+        }
+    }
+}
