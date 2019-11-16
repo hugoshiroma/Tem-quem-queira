@@ -28,6 +28,37 @@
   text-align: center;
 }
 
+.container-r-sidebar {
+  position: fixed;
+  width: 350px;
+  height: 100%;
+  right: -350px;
+  top: 0;
+  background: white;
+  z-index: 1031;
+  border-radius: 3px;
+  padding: 30px 20px;
+  text-align: center;
+  transition: all 0.4s ease-in-out;
+}
+
+.text-label {
+  font-family: 'Roboto';
+  font-weight: 375;
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.text-loading {
+  font-family: 'Roboto';
+  font-weight: 350;
+  font-size: 15px;
+}
+
+.animate {
+  right: 0;
+}
+
 .hide {
     animation: fadeOut 0.3s forwards;
 }

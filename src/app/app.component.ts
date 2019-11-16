@@ -9,8 +9,9 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   url = '';
+  showLoginForm = false;
 
-  constructor(private location: Location, private router: Router) {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.router.events
@@ -20,5 +21,13 @@ export class AppComponent implements OnInit {
           this.url = navEnd.urlAfterRedirects;
         }
       });
+  }
+
+  handleForm(form: string) {
+    switch (form) {
+      case 'login':
+        this.showLoginForm = !this.showLoginForm;
+        break;
+    }
   }
 }

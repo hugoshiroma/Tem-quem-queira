@@ -45,7 +45,7 @@
                         </a>
                     </li>
                     <li>
-                        <a [routerLink]="['/home']">
+                        <a (click)="handleForm('login')" style="cursor: pointer">
                         <img src="../assets/img/ext-icons/130924.png" class="fa fa-login"/>
                         Login
                         </a>
@@ -99,3 +99,4 @@
         </div>
     </footer>
 </div>
+<login *ngIf="showLoginForm" (blurEvent)="handleForm($event)"></login>

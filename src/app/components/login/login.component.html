@@ -1,1 +1,20 @@
-<p>login works!</p>
+<div class="container-overlay" (click)="close()"></div>
+<div class="container-r-sidebar" [ngClass]="{'animate' : animate}">
+    <div class="header">
+        <div class="container-abas">
+            <div *ngFor="let aba of abas" class="container-aba"
+                [ngStyle]="{'width' : aba.value === 'CENTROS DE CUSTO' ? '185%' : null}" (click)="selecionarAba(aba.value)">
+                <span class="normal-bold">{{aba.value}}</span>
+                <div *ngIf="aba.selecionado" class="subbar-aba"></div>
+            </div>
+        </div>
+    </div>
+    <div [ngSwitch]="aba()">
+        <div *ngSwitchCase="'LOGIN'" class="test1">
+            
+        </div>
+        <div *ngSwitchCase="'CADASTRO'" class="test2">
+
+        </div>
+    </div>
+</div>
