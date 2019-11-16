@@ -1,0 +1,42 @@
+.container-r-sidebar {
+    padding: 1px 1px;
+}
+
+.container-abas {
+    position: relative;
+    height: 40px;
+    outline: 1px solid #EFEFF4;
+    display: inline-flex;
+    width: -webkit-fill-available;
+}
+
+.container-aba {
+    cursor: pointer;
+    text-align: center;
+    width: -webkit-fill-available;
+}
+
+.container-aba .normal-bold {
+    font-family: 'Roboto';
+    font-weight: 500;
+    top: 8px;
+    position: relative;
+    color: black;
+
+}
+
+.subbar-aba {
+    position: relative;
+    left: 0;
+    bottom: -15.7px;
+    width: 100%;
+    height: 4px;
+    background: black;
+}
+
+.test1 {
+    position: relative;
+    height: 90vh;
+    width: 100%;
+    background: red;
+}
