@@ -9,12 +9,111 @@
             </div>
         </div>
     </div>
-    <div [ngSwitch]="aba()">
-        <div *ngSwitchCase="'LOGIN'" class="test1">
-            
+    <div [ngSwitch]="aba()" style="padding: 0 20px;">
+        <div class="unhide" [ngClass]="{'hide' : autenticado}">
+            <div *ngSwitchCase="'LOGIN'" class="form">
+                <form [formGroup]="loginForm" class="form" (ngSubmit)="login()">
+                    <mat-form-field style="margin-bottom: 15px;">
+                        <mat-label>Usuário</mat-label>
+                        <input matInput
+                        type="text"
+                        placeholder="Usuário"
+                        [formControl]="loginForm.get('username')"/>
+                        <mat-error *ngIf="loginForm.get('username').invalid">{{loginForm.get('username').hasError('required') ? 'Você deve informar um nome de usuário!' : ''}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Senha</mat-label>
+                        <input matInput
+                        type="password"
+                        placeholder="Senha"
+                        [formControl]="loginForm.get('password')"/>
+                        <mat-error *ngIf="loginForm.get('password').invalid">{{loginForm.get('password').hasError('required') ? 'Você deve informar uma senha!' : ''}}</mat-error>
+                    </mat-form-field>
+                    <br/>
+                    <mat-error *ngIf="loginForm.get('username').invalid">{{loginForm.get('username').hasError('invalid') ? 'Usuário ou senha inválidos!' : ''}}</mat-error>
+                    <br/>
+                    <button mat-button type="submit">Login</button>
+                </form>
+            </div>
         </div>
-        <div *ngSwitchCase="'CADASTRO'" class="test2">
-
+        <div class="logedIn unhide" [ngClass]="{'hide' : !autenticado}">
+            Bem-vindo, {{user !== undefined ? user.name.split(' ')[0] : ''}}!
+        </div>
+        <div class="unhide" [ngClass]="{'hide' : cadastrado}">
+            <div *ngSwitchCase="'CADASTRO'" class="form">
+                <form [formGroup]="signInForm" (ngSubmit)="signIn()">
+                    <mat-form-field>
+                        <mat-label>Nome completo</mat-label>
+                        <input matInput
+                        type="text"
+                        placeholder="Nome"
+                        [formControl]="signInForm.get('name')"/>
+                        <mat-error *ngIf="signInForm.get('name').invalid">{{signInForm.get('name').hasError('required') ? 'Você deve informar seu nome!' : ''}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>CEP</mat-label>
+                        <input matInput
+                        type="text"
+                        placeholder="CEP"
+                        mask="00000-000"
+                        [formControl]="signInForm.get('cep')"/>
+                        <mat-error *ngIf="signInForm.get('cep').invalid">{{signInForm.get('cep').hasError('required') ? 'Você deve informar um CEP!' : ''}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Número</mat-label>
+                        <input matInput
+                        type="text"
+                        placeholder="Número"
+                        mask="0*"
+                        [formControl]="signInForm.get('number')"/>
+                        <mat-error *ngIf="signInForm.get('number').invalid">{{signInForm.get('number').hasError('required') ? 'Você deve informar um número!' : ''}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>E-mail</mat-label>
+                        <input matInput
+                        type="text"
+                        placeholder="E-mail"
+                        [formControl]="signInForm.get('email')"/>
+                        <mat-error *ngIf="signInForm.get('email').invalid">{{signInForm.get('email').hasError('required') ? 'Você deve informar um e-mail!' : ''}}</mat-error>
+                        <mat-error *ngIf="signInForm.get('email').invalid">{{signInForm.get('email').errors.validEmail ? 'Você deve informar um e-mail válido!' : ''}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field style="margin-bottom: 15px;">
+                        <mat-label>Usuário</mat-label>
+                        <input matInput
+                        type="text"
+                        placeholder="Usuário"
+                        [formControl]="signInForm.get('username')"/>
+                        <mat-error *ngIf="signInForm.get('username').invalid">{{signInForm.get('username').hasError('required') ? 'Você deve informar um nome de usuário!' : ''}}</mat-error>
+                        <mat-error *ngIf="signInForm.get('username').invalid">{{signInForm.get('username').hasError('taken') ? 'Usuário já existente!' : ''}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field style="margin-bottom: 15px;">
+                        <mat-label>Senha</mat-label>
+                        <input matInput
+                        type="password"
+                        placeholder="Senha"
+                        [formControl]="signInForm.get('password')"/>
+                        <mat-error *ngIf="signInForm.get('password').invalid">{{signInForm.get('password').hasError('required') ? 'Você deve informar uma senha!' : ''}}</mat-error>
+                        <mat-error *ngIf="signInForm.get('password').invalid">{{signInForm.get('password').hasError('unmatch') ? 'A senha e sua confirmação não são iguais!' : ''}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Confirme sua senha</mat-label>
+                        <input matInput
+                        type="password"
+                        placeholder="Senha"
+                        [formControl]="signInForm.get('passwordConfirmation')"/>
+                        <mat-error *ngIf="signInForm.get('passwordConfirmation').invalid">{{signInForm.get('passwordConfirmation').hasError('required') ? 'Você deve confirmar sua senha!' : ''}}</mat-error>
+                        <mat-error *ngIf="signInForm.get('passwordConfirmation').invalid">{{signInForm.get('passwordConfirmation').hasError('unmatch') ? 'A senha e sua confirmação não são iguais!' : ''}}</mat-error>
+                    </mat-form-field>
+                    <br/>
+                    <br/>
+                    <button mat-button type="submit">Cadastrar</button>
+                </form>
+            </div>
+        </div>
+        <div class="signedIn unhide" [ngClass]="{'hide' : !cadastrado}">
+            Seu cadastro foi realizado com sucesso!
+            <br/>
+            Você será redirecionado para a aba de login em instantes para que possa entrar com suas credenciais.
         </div>
     </div>
 </div>

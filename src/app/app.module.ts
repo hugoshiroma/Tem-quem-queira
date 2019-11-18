@@ -10,7 +10,8 @@ import { LocationComponent } from './screens/location/location.component';
 import { NgxMaskModule } from 'ngx-mask';
 
 import { AdressFormModule } from './components/adress-form/adress-form.module';
-import { LoginComponent } from './components/login/login.component';
+import { LoginModule } from './components/login/login.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,13 +19,15 @@ import { LoginComponent } from './components/login/login.component';
     ChatComponent,
     LocationComponent,
     HomeComponent,
-    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AdressFormModule,
     BrowserAnimationsModule,
+    LoginModule,
+    HttpClientModule,
+
     NgxMaskModule.forRoot()
   ],
   providers: [],

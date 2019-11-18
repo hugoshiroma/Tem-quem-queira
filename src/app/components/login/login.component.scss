@@ -34,9 +34,23 @@
     background: black;
 }
 
-.test1 {
+.form {
     position: relative;
-    height: 90vh;
-    width: 100%;
-    background: red;
+    top: 25px;
+}
+
+.signedIn {
+    position: relative;
+    top: 50px;
+}
+
+.logedIn {
+    position: relative;
+    top: 50px;
+}
+
+@media (max-width: 350px) {
+    .container-r-sidebar {
+        width: 250px !important;
+    }
 }

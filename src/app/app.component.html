@@ -26,10 +26,18 @@
                         Home
                         </a>
                     </li>
-                    <li>
+                    <li *ngIf="!autenticado">
                         <a (click)="handleForm('login')" style="cursor: pointer">
                         <img src="../assets/img/ext-icons/130924.png" class="fa fa-login"/>
                         Login
+                        </a>
+                    </li>
+                    <li *ngIf="autenticado">
+                        <a (click)="openChat()" style="cursor: pointer">
+                        <i class="material-icons" style="font-size: 20px">chat</i>
+                        <span style="position: relative; top: -4px">
+                            Chat
+                        </span>
                         </a>
                     </li>
                 </ul>
@@ -65,4 +73,4 @@
         </div>
     </footer>
 </div>
-<login *ngIf="showLoginForm" (blurEvent)="handleForm($event)"></login>
+<login *ngIf="showLoginForm" (blurEvent)="handleForm($event)" (loginEvent)="handleLogin($event)"></login>

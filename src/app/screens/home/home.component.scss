@@ -51,7 +51,9 @@ top: 20px;
 }
 
 .parallax-background-image{
-top: -100px;
+    transform: scale(1.1);
+    top: 20px;
+    filter: saturate(180%);
 position: relative;
 }
 

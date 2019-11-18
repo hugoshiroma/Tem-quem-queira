@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router, NavigationEnd } from '@angular/router';
+import { User } from './components/login/shared/user.model';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,8 @@ import { Router, NavigationEnd } from '@angular/router';
 export class AppComponent implements OnInit {
   url = '';
   showLoginForm = false;
+  autenticado = false;
+  user: User;
 
   constructor(private router: Router) {}
 
@@ -29,5 +32,14 @@ export class AppComponent implements OnInit {
         this.showLoginForm = !this.showLoginForm;
         break;
     }
+  }
+
+  handleLogin(user: User) {
+    this.autenticado = true;
+    this.user = user;
+  }
+
+  openChat() {
+    
   }
 }
