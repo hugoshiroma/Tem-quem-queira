@@ -40,6 +40,14 @@
                         </span>
                         </a>
                     </li>
+                    <li *ngIf="autenticado">
+                        <a (click)="signOut()" style="cursor: pointer">
+                        <i class="material-icons" style="font-size: 20px">exit_to_app</i>
+                        <span style="position: relative; top: -4px">
+                            Sair
+                        </span>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

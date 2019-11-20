@@ -12,6 +12,7 @@ import { NgxMaskModule } from 'ngx-mask';
 import { AdressFormModule } from './components/adress-form/adress-form.module';
 import { LoginModule } from './components/login/login.module';
 import { HttpClientModule } from '@angular/common/http';
+import { MapsService } from './maps.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,6 @@ import { HttpClientModule } from '@angular/common/http';
 
     NgxMaskModule.forRoot()
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

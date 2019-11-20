@@ -6,7 +6,8 @@ import { MapsService } from './../../maps.service';
 @Component({
   selector: 'adress-form',
   templateUrl: './adress-form.component.html',
-  styleUrls: ['./adress-form.component.scss']
+  styleUrls: ['./adress-form.component.scss'],
+  providers: [MapsService]
 })
 export class AdressFormComponent implements OnInit {
   url = '';
@@ -38,7 +39,12 @@ export class AdressFormComponent implements OnInit {
       this.step = 1;
       setTimeout(() => {
         this.step = 2;
-        this.maps.getAdress(this.locationForm.controls['cep'].value);
+        this.maps.location(this.locationForm.controls['cep'].value).subscribe(x => {
+          if (x !== undefined) {
+            this.lat = x.results[0].geometry.location.lat;
+            this.long = x.results[0].geometry.location.lng;
+          }
+        });
       }, 3000);
     }
   }

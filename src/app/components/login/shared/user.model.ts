@@ -6,5 +6,6 @@ export class User {
     username: string;
     password: string;
     passwordConfirmation: string;
+    loged: boolean;
     DOE: string;
 }
