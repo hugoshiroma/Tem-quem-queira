@@ -39,11 +39,101 @@ const Usuario = sequelize.define('usuarios', {
         type: Sequelize.BIGINT
     }
 })
-
 //após a criação da tabela é necessário comentar isso para não recriar a tabela
 Usuario.sync({force: true})
 
+const Conversation = sequelize.define('conversations', {
+    openeddate: {
+        type: Sequelize.DATE
+    }
+})
+//após a criação da tabela é necessário comentar isso para não recriar a tabela
+Conversation.sync({force: true})
 
+const Message = sequelize.define('messages', {
+    idconversation: {
+        type: Sequelize.BIGINT
+    },
+    content: {
+        type: Sequelize.TEXT
+    },
+    sender: {
+        type: Sequelize.STRING
+    },
+    recipient: {
+        type: Sequelize.STRING
+    },
+    sentdate: {
+        type: Sequelize.DATE
+    }
+})
+//após a criação da tabela é necessário comentar isso para não recriar a tabela
+Message.sync({force: true})
+
+const Donation = sequelize.define('donations', {
+    userid: {
+        type: Sequelize.BIGINT
+    },
+    entityid: {
+        type: Sequelize.TEXT
+    },
+    iscompleted: {
+        type: Sequelize.BOOLEAN
+    },
+    recipient: {
+        type: Sequelize.STRING
+    },
+    sentdate: {
+        type: Sequelize.DATE
+    },
+    quantity: {
+        type: Sequelize.INTEGER 
+    },
+    userfeedback: {
+        type: Sequelize.TEXT
+    },
+    userrating: {
+        type: Sequelize.INTEGER
+    },
+    entityfeedback: {
+        type: Sequelize.TEXT
+    },
+    entityrating: {
+        type: Sequelize.INTEGER
+    },
+    clothes: {
+        type: Sequelize.BOOLEAN
+    },
+    toys: {
+        type: Sequelize.BOOLEAN
+    },
+    furniture: {
+        type: Sequelize.BOOLEAN
+    },
+    food: {
+        type: Sequelize.BOOLEAN
+    },
+    musicalinstrument: {
+        type: Sequelize.BOOLEAN
+    },
+    books: {
+        type: Sequelize.BOOLEAN
+    },
+    cleaningproducts: {
+        type: Sequelize.BOOLEAN
+    },
+    medical: {
+        type: Sequelize.BOOLEAN
+    },
+    scholarmaterial: {
+        type: Sequelize.BOOLEAN
+    },
+    personalhygiene: {
+        type: Sequelize.BOOLEAN
+    }
+})
+//após a criação da tabela é necessário comentar isso para não recriar a tabela
+Donation.sync({force: true})
 
 const Entidade = sequelize.define('entidades', {
     name: {
@@ -110,18 +200,15 @@ const Entidade = sequelize.define('entidades', {
         type: Sequelize.BIGINT
     }
 })
-
 //após a criação da tabela é necessário comentar isso para não recriar a tabela
 Entidade.sync({force: true})
 
-//exemplo de busca por id
+//exemplo de busca por id com print no console
 /*
 Postagem.findByPk(2).then(postagem => {
     console.log(postagem);
 })
 */
-
-//Postagem.sync({force: true})
 
 //exemplo de inserção
 /*
