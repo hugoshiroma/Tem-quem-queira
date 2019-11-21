@@ -19,5 +19,7 @@ export class Entity {
         personalHygiene: boolean,
     };
     loged: boolean;
-    DOE: string;
+    lat: number;
+    long: number;
+    points: number;
 }

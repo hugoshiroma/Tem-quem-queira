@@ -13,7 +13,7 @@
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="example" >
-                <ul class="nav navbar-nav navbar-right" [ngClass]="{'inverted': url === '/location'}">
+                <ul class="nav navbar-nav navbar-right" [ngClass]="{'inverted': url === '/location' || inverted}">
                     <li>
                         <a [routerLink]="['/location']">
                         <img src="../assets/img/ext-icons/8a7884609c.png" class="fa fa-donation"/>
@@ -41,7 +41,15 @@
                         </a>
                     </li>
                     <li *ngIf="autenticado">
-                        <a (click)="signOut()" style="cursor: pointer">
+                        <a (click)="handleLogin('login')" style="cursor: pointer">
+                        <i class="material-icons" style="font-size: 20px">person</i>
+                        <span style="position: relative; top: -4px">
+                            Perfil
+                        </span>
+                        </a>
+                    </li>
+                    <li *ngIf="autenticado">
+                        <a (click)="handleLogin('logoff')" style="cursor: pointer">
                         <i class="material-icons" style="font-size: 20px">exit_to_app</i>
                         <span style="position: relative; top: -4px">
                             Sair
@@ -81,4 +89,4 @@
         </div>
     </footer>
 </div>
-<login *ngIf="showLoginForm" (blurEvent)="handleForm($event)" (loginEvent)="handleLogin($event)"></login>
+<login #login [_user]="user" (blurEvent)="handleForm($event)" (loginEvent)="handleLogin('login', $event)" [ngStyle]="{'display' : showLoginForm ? '' : 'none'}"></login>

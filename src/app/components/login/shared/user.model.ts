@@ -7,5 +7,7 @@ export class User {
     password: string;
     passwordConfirmation: string;
     loged: boolean;
-    DOE: string;
+    lat: number;
+    long: number;
+    points = 0;
 }
