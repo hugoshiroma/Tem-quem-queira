@@ -1,3 +1,7 @@
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-accent .mat-pseudo-checkbox-checked, .mat-accent .mat-pseudo-checkbox-indeterminate, .mat-pseudo-checkbox-checked, .mat-pseudo-checkbox-indeterminate {
+    background-color: #3F51B5 !important;
+}
+
 .container-r-sidebar {
     padding: 1px 1px;
 }
@@ -53,4 +57,64 @@
     .container-r-sidebar {
         width: 250px !important;
     }
+}
+
+.container-dados {
+    width: 100%;
+    height: 180px;
+    display: inline-flex;
+    padding-bottom: 15px;
+    border-bottom: 2px solid black;
+}
+
+.container-foto {
+    position: relative;
+    left: 0;
+    width: 40%;
+    padding: 0 5px;
+    text-align: center;
+    align-content: center;
+}
+
+.container-info {
+    position: relative;
+    left: 0;
+    width: 60%;
+    padding: 0 5px;
+    padding-top: 30px;
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.text-label {
+    font-size: 18px;
+}
+
+.text-label-edit {
+    position: relative;
+    top: 45px;
+    right: 63px;
+    font-size: 14px;
+}
+
+.container-foto img {
+    transform: scale(0.2);
+    top: -143px;
+    left: -176px;
+    position: relative;
+    border-radius: 250px;
+}
+
+.container-doacao {
+    width: 100%;
+    height: 50px;
+    background: green;
+}
+
+.container-doacoes .text-label {
+    position: relative;
+    top: -30px;
+    left: 0;
 }

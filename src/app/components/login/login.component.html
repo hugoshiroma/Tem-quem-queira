@@ -2,14 +2,14 @@
 <div class="container-r-sidebar" [ngClass]="{'animate' : animate}">
     <div class="header">
         <div class="container-abas">
-            <div *ngFor="let aba of abas" class="container-aba"
+            <div *ngFor="let aba of abasUnhidden()" class="container-aba"
                 [ngStyle]="{'width' : aba.value === 'CENTROS DE CUSTO' ? '185%' : null}" (click)="selecionarAba(aba.value)">
                 <span class="normal-bold">{{aba.value}}</span>
                 <div *ngIf="aba.selecionado" class="subbar-aba"></div>
             </div>
         </div>
     </div>
-    <div [ngSwitch]="aba()" style="padding: 0 20px;">
+    <div [ngSwitch]="aba()" style="padding: 0 20px" [ngStyle]="{'overflow' : (aba() === 'CADASTRO' && !cadastrado) ? 'overlay' : ''}">
         <div class="unhide" [ngClass]="{'hide' : autenticado}">
             <div *ngSwitchCase="'LOGIN'" class="form">
                 <form [formGroup]="loginForm" class="form" (ngSubmit)="login()">
@@ -36,8 +36,8 @@
                 </form>
             </div>
         </div>
-        <div class="logedIn unhide" [ngClass]="{'hide' : !autenticado}">
-            Bem-vindo, {{user !== undefined ? user.name.split(' ')[0] : ''}}!
+        <div class="logedIn unhide" [ngClass]="{'hide' : !autenticado || hideWelcome}">
+            Bem-vindo, {{user !== undefined && user !== null ? user.name.split(' ')[0] : ''}}!
         </div>
         <div class="unhide" [ngClass]="{'hide' : cadastrado}">
             <div *ngSwitchCase="'CADASTRO'" class="form">
@@ -60,7 +60,7 @@
                         <mat-error *ngIf="signInForm.get('cep').invalid">{{signInForm.get('cep').hasError('required') ? 'Você deve informar um CEP!' : ''}}</mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <mat-label>Número</mat-label>
+                        <mat-label>Número da residência</mat-label>
                         <input matInput
                         type="text"
                         placeholder="Número"
@@ -106,6 +106,10 @@
                     </mat-form-field>
                     <br/>
                     <br/>
+                    <mat-checkbox [checked]="donator" (change)="chooseProfile('donator')" style="margin-right: 20px;">Doador</mat-checkbox>
+                    <mat-checkbox [checked]="entity" (change)="chooseProfile('entity')">Entidade</mat-checkbox>
+                    <br/>
+                    <br/>
                     <button mat-button type="submit">Cadastrar</button>
                 </form>
             </div>
@@ -114,6 +118,27 @@
             Seu cadastro foi realizado com sucesso!
             <br/>
             Você será redirecionado para a aba de login em instantes para que possa entrar com suas credenciais.
+        </div>
+        <div class="unhide" [ngClass]="{'hide' : user === null && !autenticado}">
+            <div *ngSwitchCase="'PERFIL'" class="profile">
+                <div class="container-dados">
+                    <div class="container-foto">
+                        <img src="../../../assets/img/ext-icons/no-photo7.png">
+                    </div>
+                    <div class="container-info">
+                        <span class="text-label">Nome</span>: <span class="text-label">{{user.name}}</span>
+                        <br/>
+                        <span class="text-label">Perfil</span>: <span class="text-label">Doador</span>
+                        <br/>
+                        <span class="text-label">Pontos</span>: <span class="text-label">{{user.points}}</span>
+                        <span class="text-label-edit" style="cursor: pointer">Editar</span>
+                    </div>
+                </div>
+                <div class="container-doacoes">
+                    <span class="text-label">Doações</span>
+
+                </div>
+            </div>
         </div>
     </div>
 </div>
