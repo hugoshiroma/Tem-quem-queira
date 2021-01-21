@@ -29,7 +29,7 @@
     "nodemon": "^2.0.0",
     "rxjs": "~6.4.0",
     "sequelize": "^5.21.2",
-    "socket.io": "^2.3.0",
+    "socket.io": "^2.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },
