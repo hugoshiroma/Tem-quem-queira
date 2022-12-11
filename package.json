@@ -23,7 +23,7 @@
     "@angular/platform-browser-dynamic": "~8.2.9",
     "@angular/router": "~8.2.9",
     "ejs": "^2.7.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "mysql2": "^2.0.1",
     "ngx-mask": "^8.1.6",
     "nodemon": "^2.0.0",
